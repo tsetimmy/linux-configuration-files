@@ -1,0 +1,26 @@
+vbell_msg ""
+vbell off
+defscrollback 100000
+#caption always "%{= kw}%-w%{= BW}%n %t%{-}%+w %-= @%H - %l - %LD %d %LM - %c:%s"  #Cedomir's script
+#caption always           "%?%F%{= Kk}%:%{=u kR}%?  %h %-024=%{+b} %C%a %D %d %M %Y%{= db}"
+
+#change the hardstatus settings to give an window list at the bottom of the                                                                        
+#screen, with the time and date and with the current window highlighted                                                                            
+hardstatus alwayslastline
+#hardstatus string '%{= kG}%-Lw%{= kW}%50> %n%f* %t%{= kG}%+Lw%< %{= kG}%-=%c:%s%{-}'
+hardstatus string '%{= kG}[ %{G}%H %{g}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B} %m-%d %{W}%c %{g}]'
+
+#Key binding
+#bindkey -k k4 next
+#bindkey -k k3 prev
+
+bindkey "^[[13~" prev
+bindkey "^[[14~" next
+
+#bindkey "^[OR" prev
+#bindkey "^[OS" next
+
+#terminfo * k3=\E[18~
+#terminfo * k4=\E[19~
+
+#bind c stuff "screen -X chdir \$PWD; screen^M"
