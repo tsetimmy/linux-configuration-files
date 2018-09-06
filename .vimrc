@@ -50,10 +50,10 @@ autocmd BufRead,BufNewFile *.c,*.h,*.cc,*.java,*.cu set nosmartindent cindent
 set fo=tcqn
 autocmd BufRead,BufNewFile *.c,*.h,*.cc,*.java,*.cu set fo=croqn
 
-set shiftwidth=2
+set shiftwidth=4
 
-" Set the tab width to be 2.
-set tabstop=2
+" Set the tab width to be 4.
+set tabstop=4
 
 " A tab is converted to spaces. To type a real tab, use ^V<tab>
 set expandtab
@@ -89,13 +89,13 @@ endif
 "autocmd BufRead,BufNewFile *.c,*.h,*.cc,*.java,*.cu set foldmethod=indent
 
 " Treat CUDA files (.cu) as C++ files
-autocmd BufRead,BufNewFile *.cu set filetype=cpp
+"autocmd BufRead,BufNewFile *.cu set filetype=cpp
 
 " A shortcut to enter a couple of lines of comments
-command Dc r ${HOME}/.vim/comment-delim.txt
+"command Dc r ${HOME}/.vim/comment-delim.txt
 
 " Enable tag jumping
-set tags=${HOME}/ece454/hw5/tags
+"set tags=${HOME}/ece454/hw5/tags
 "set tags=${HOME}/Desktop/lab5/tags
 "set tags=${HOME}/ece552/lab4/simplesim-3.0d-assig4/tags
 "set tags=${HOME}/ece454/hw2/tags
@@ -134,20 +134,6 @@ set showcmd
 " Map the autocomplete to tab
 "inoremap <tab> <c-r>=Smart_TabComplete()<CR>
 
-"---"
-map cinclude :r! sed -n 138,147p ~/.vimrc :.-11d :.,+9s/^"//
-"#include <iostream>
-"#include <stdlib.h>
-"#include <string>
-"#include <cstring>
-"using namespace std;
-"
-"int main () {
-"
-"  return 0;
-"}
-"---"
-
 syntax on
 
 " some tab mappings
@@ -161,18 +147,44 @@ nnoremap s <C-W>w
 nnoremap S <C-W>W
 "nnoremap - <PageDown>
 "nnoremap = <PageUp>
-nnoremap . /
+"nnoremap . /
 nnoremap m <C-e>
 nnoremap , <C-y>
 "ca . CtrlP .
 set cursorline
 
 " Configure vim pathogen
-execute pathogen#infect()
-let g:NERDTreeDirArrows=0
+"execute pathogen#infect()
+"let g:NERDTreeDirArrows=0
 
 
 colorscheme torte
 
 "set mouse=a
 "set ttymouse=xterm2
+
+
+"#filetype plugin on
+"set omnifunc=syntaxcomplete#Complete
+
+set guioptions-=m  "remove menu bar
+set guioptions-=T  "remove toolbar
+set guioptions-=r  "remove right-hand scroll bar
+set guioptions-=L  "remove left-hand scroll bar
+
+inoremap <C-v> <ESC>"+pa
+nnoremap <C-v> <ESC>"+pa<ESC>
+vnoremap <C-c> "+y
+vnoremap <C-d> "+d
+
+"This unsets the "last search pattern" register by hitting return
+nnoremap <ESC> :noh<CR>
+"if has('gui_running')
+"  nnoremap <silent> <esc> :nohlsearch<return><esc>
+"else
+"  " code from above
+"  augroup no_highlight
+"    autocmd TermResponse * nnoremap <esc> :noh<return><esc>
+"  augroup END
+"
+"end
